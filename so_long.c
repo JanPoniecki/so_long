@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:31:09 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/28 22:46:03 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/29 23:01:39 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	put_img(char m, t_window *window, int x, int y)
 	else if (m == 'E')
 		tile = window->exit;
 	else
-		return;
+		return ;
 	mlx_put_image_to_window(window->mlx, window->win, tile, x, y);
 }
 
@@ -84,11 +84,11 @@ int	move_hero(int key, t_window *window)
 {
 	if (window->e_status == 1 || key == 120)
 	{
-		end_game(window);
+		end_game(window, "thank you for playing so_long! :)\n");
 		return (0);
 	}
 	mlx_put_image_to_window(window->mlx, window->win, \
-		window->land, window->h_x, window->h_y);
+		window->lndd, window->h_x, window->h_y);
 	if (key == 100 && !is_wall(window->h_x + 100, window->h_y, window))
 		window->h_x += 100;
 	else if (key == 97 && !is_wall(window->h_x - 100, window->h_y, window))
@@ -114,6 +114,7 @@ int	main(void)
 
 	window.win_x = 0;
 	window.win_y = 0;
+	window.win = NULL;
 	window.mlx = mlx_init();
 	map = read_map(&window);
 	window.map = ft_split(map, '\n');

@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 22:47:19 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/28 22:19:50 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/29 22:53:42 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_window
 	int		items;
 	int		e_status;
 	void	*land;
+	void	*lndd;
 	void	*wall;
 	void	*coll;
 	void	*exit;
@@ -41,7 +42,7 @@ typedef struct s_window
 char	*read_map(t_window *window);
 int		map_validator(t_window *window);
 void	init_blocks(t_window *w);
-void	end_game(t_window *w);
+void	end_game(t_window *w, char *message);
 int		int_color(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 

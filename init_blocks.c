@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:49:00 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/28 21:55:56 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/29 22:53:03 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void	init_blocks(t_window *w)
 	w->exit = mlx_xpm_file_to_image(w->mlx, "./graph/shed.xpm", \
 		&(w->h_xsize), &(w->h_ysize));
 	w->scss = mlx_xpm_file_to_image(w->mlx, "./graph/shdd.xpm", \
+		&(w->h_xsize), &(w->h_ysize));
+	w->lndd = mlx_xpm_file_to_image(w->mlx, "./graph/grsd.xpm", \
 		&(w->h_xsize), &(w->h_ysize));
 }
