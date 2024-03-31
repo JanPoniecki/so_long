@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 16:29:16 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/31 20:03:27 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:34:16 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	find_start(t_window *w, int i, int j)
 	}
 }
 
-static void	find_connections(char	*avals, t_node **nodes, int x, int y)
+static void	find_connections(char	*avals, t_node **ns, int x, int y)
 {
 	int	j;
 	int	i;
@@ -68,19 +68,19 @@ static void	find_connections(char	*avals, t_node **nodes, int x, int y)
 		add_to_avals(x, y, avals);
 		while (1)
 		{
-			if (nodes[i]->id[0] == x && nodes[i]->id[1] == y)
-				break;
+			if (ns[i]->id[0] == x && ns[i]->id[1] == y)
+				break ;
 			i++;
 		}
-		while (nodes[i]->nrbs[j] != 0)
+		while (ns[i]->nrbs[j] != 0)
 		{
-			find_connections(avals, nodes, nodes[i]->nrbs[j], nodes[i]->nrbs[j + 1]);
+			find_connections(avals, ns, ns[i]->nrbs[j], ns[i]->nrbs[j + 1]);
 			j += 2;
 		}
 	}
 }
 
-char	*aval_from_start(t_window *w, t_node **nodes, int i, int j)
+void	aval_from_start(t_window *w, t_node **nodes, int i, int j)
 {
 	char	*avals;
 	int		elements;
@@ -96,7 +96,8 @@ char	*aval_from_start(t_window *w, t_node **nodes, int i, int j)
 			if (w->map[i][j] == 'C' || w->map[i][j] == 'E')
 			{
 				if (is_in_avals(i, j, avals) == 0)
-					end_game(w, "there is no valid path for some collectables or for the exit\n");
+					end_game(w, "there is no valid path for some \
+						collectables or for the exit\n");
 			}
 			j++;
 		}

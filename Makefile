@@ -23,5 +23,5 @@ fclean: clean
 re: fclean all
 
 src:
-	$(CC) $(SRC_FILES) -g -I. -I./libft -L. -L./libft -lmlx -lXext -lX11 -lm -lz -lft -o $(NAME)
+	$(CC) $(CFLAGS) $(SRC_FILES) -g -I. -I./libft -L. -L./libft -lmlx -lXext -lX11 -lm -lz -lft -o $(NAME)
 

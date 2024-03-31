@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:52:25 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/30 20:42:27 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:28:32 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int	check_borders(t_window *window, int row, int col)
 		}
 		if (window->map[row][0] != '1' || \
 			window->map[row][ft_strlen(window->map[row]) - 1] != '1')
-			return (-1); 
+			return (-1);
 		row++;
 		col = 0;
 	}

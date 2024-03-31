@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:39:29 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/31 20:04:21 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/31 20:37:56 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_node	**init_nodes(t_window *w, int i, int j)
 		{
 			if (w->map[i][j] != '1')
 			{
-				nodes[n] = malloc(sizeof(t_node));
+				nodes[n] = malloc(sizeof(t_node) + 1);
 				nodes[n]->id[0] = i;
 				nodes[n]->id[1] = j;
 				ft_bzero(nodes[n]->nrbs, 9);
@@ -63,13 +63,13 @@ static void	fill_up_neighbours_row(t_window *w, t_node **ns, int i, int j)
 {
 	while (ns[i])
 	{
-		if (w->map[ns[i]->id[0] - 1][ns[i]->id[1]] != '1')
+		if (w->map[ns[i]->id[0] - 1][ns[i]->id[1] + 0] != '1')
 		{
 			ns[i]->nrbs[j] = ns[i]->id[0] - 1;
 			ns[i]->nrbs[j + 1] = ns[i]->id[1];
 			j += 2;
 		}
-		if (w->map[ns[i]->id[0] + 1][ns[i]->id[1]] != '1')
+		if (w->map[ns[i]->id[0] + 1][ns[i]->id[1] + 0] != '1')
 		{
 			ns[i]->nrbs[j] = ns[i]->id[0] + 1;
 			ns[i]->nrbs[j + 1] = ns[i]->id[1];
@@ -86,13 +86,13 @@ static void	fill_up_neighbours_col(t_window *w, t_node **ns, int i, int j)
 	{
 		while (ns[i]->nrbs[j] != 0)
 			j++;
-		if (w->map[ns[i]->id[0]][ns[i]->id[1] - 1] != '1')
+		if (w->map[ns[i]->id[0] + 0][ns[i]->id[1] - 1] != '1')
 		{
 			ns[i]->nrbs[j] = ns[i]->id[0];
 			ns[i]->nrbs[j + 1] = ns[i]->id[1] - 1;
 			j += 2;
 		}
-		if (w->map[ns[i]->id[0]][ns[i]->id[1] + 1] != '1')
+		if (w->map[ns[i]->id[0] + 0][ns[i]->id[1] + 1] != '1')
 		{
 			ns[i]->nrbs[j] = ns[i]->id[0];
 			ns[i]->nrbs[j + 1] = ns[i]->id[1] + 1;
@@ -115,4 +115,7 @@ void	check_path(t_window *window)
 	fill_up_neighbours_row(window, nodes, i, j);
 	fill_up_neighbours_col(window, nodes, i, j);
 	aval_from_start(window, nodes, i, j);
+	while (nodes[i])
+		free(nodes[i++]);
+	free(nodes);
 }
