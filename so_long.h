@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 22:47:19 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/29 22:53:42 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/31 16:36:03 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@
 # include "mlx.h"
 # include "libft/libft.h"
 # include <fcntl.h>
+
+typedef struct s_node
+{
+	char id[2];
+	char nrbs[8];
+}	t_node;
 
 typedef struct s_window
 {
@@ -40,9 +46,12 @@ typedef struct s_window
 }	t_window;
 
 char	*read_map(t_window *window);
+void	check_path(t_window *window);
 int		map_validator(t_window *window);
 void	init_blocks(t_window *w);
 void	end_game(t_window *w, char *message);
+int		count_fields(t_window *window, int i, int j);
+char	*aval_from_start(t_window *w, t_node **nodes, int i, int j);
 int		int_color(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 

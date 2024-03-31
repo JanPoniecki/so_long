@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:52:25 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/29 22:55:20 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/03/30 20:42:27 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,6 @@ static void	check_chars(t_window *w, int row, int col, char *vaild_chars)
 		end_game(w, "incorrect number of heroes or exits in map file \n");
 }
 
-// void	path_control(char **map, int cs, int x, int y)
-// {
-// 	ft_printf("%s, %d\n", map[1], cs);
-// }
-
 int	map_validator(t_window *window)
 {
 	int	row;
@@ -99,6 +94,6 @@ int	map_validator(t_window *window)
 	if (check_borders(window, row, col) != 0)
 		end_game(window, "not all borders are walls \n");
 	check_chars(window, row, col, "10EPC");
-	// path_control(window->map, window->items, window->h_x, window->h_y);
+	check_path(window);
 	return (0);
 }
