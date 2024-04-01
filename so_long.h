@@ -43,6 +43,7 @@ typedef struct s_window
 	void	*coll;
 	void	*exit;
 	void	*scss;
+	int		moves;
 }	t_window;
 
 char	*read_map(t_window *window);

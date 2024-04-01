@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:31:09 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/29 23:01:39 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:03:31 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,11 @@ int	is_wall(int x, int y, t_window *window)
 		return (0);
 	}
 	if (ft_strchr("0CP", window->map[y][x]))
+	{
+		window->moves++;
+		ft_printf("so far you have made %d moves\n", window->moves);
 		return (0);
+	}
 	else
 		return (1);
 }
@@ -114,6 +118,7 @@ int	main(void)
 
 	window.win_x = 0;
 	window.win_y = 0;
+	window.moves = 0;
 	window.win = NULL;
 	window.mlx = mlx_init();
 	map = read_map(&window);
