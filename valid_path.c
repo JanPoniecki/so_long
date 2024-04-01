@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/31 16:29:16 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/01 21:57:40 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/01 22:15:57 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,16 @@ void	aval_from_start(t_window *w, t_node **nodes, int i, int j)
 			if (w->map[i][j] == 'C' || w->map[i][j] == 'E')
 			{
 				if (is_in_avals(i, j, avals) == 0)
+				{
+					free(avals);
 					end_game(w, "there is no valid path for some \
 collectables or for the exit\n");
+				}
 			}
 			j++;
 		}
 		i++;
 		j = 0;
 	}
-	free (avals);
+	free(avals);
 }
