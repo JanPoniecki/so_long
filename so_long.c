@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:31:09 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/01 22:03:31 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/02 21:52:17 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	put_img(char m, t_window *window, int x, int y)
 	}
 	else if (m == 'E')
 		tile = window->exit;
+	else if (m == 'S')
+		tile = window->sign;
 	else
 		return ;
 	mlx_put_image_to_window(window->mlx, window->win, tile, x, y);
@@ -58,6 +60,7 @@ void	init_map(char *map, t_window *window)
 		}
 		map++;
 	}
+	put_img('S', window, (window->win_x) - 100, (window->win_y) - 100);
 }
 
 int	is_wall(int x, int y, t_window *window)

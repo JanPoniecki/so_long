@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 22:07:33 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/01 22:06:41 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/02 21:49:56 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	end_game(t_window *w, char *message)
 	mlx_destroy_image(w->mlx, w->coll);
 	mlx_destroy_image(w->mlx, w->exit);
 	mlx_destroy_image(w->mlx, w->scss);
+	mlx_destroy_image(w->mlx, w->sign);
 	if (w->e_status == 1)
 		ft_printf("you finished the game with %d moves!\n", w->moves);
 	if (w->win)

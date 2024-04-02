@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 22:47:19 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/31 20:34:24 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/02 21:50:44 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_window
 	void	*coll;
 	void	*exit;
 	void	*scss;
+	void	*sign;
 	int		moves;
 }	t_window;
 
