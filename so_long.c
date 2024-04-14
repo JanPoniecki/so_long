@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:31:09 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/02 21:52:17 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/13 22:19:49 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,29 @@ void	init_map(char *map, t_window *window)
 	y = 0;
 	window->win = mlx_new_window(window->mlx, window->win_x, \
 		window->win_y, "so long");
+	if (!window->win)
+		exit_error(window, "allocation error", 1);
 	while (*map)
 	{
 		if (*map != '\n')
 		{
 			put_img(*map, window, x, y);
-			x += 100;
+			x += 75;
 		}
 		else
 		{
-			y += 100;
+			y += 75;
 			x = 0;
 		}
 		map++;
 	}
-	put_img('S', window, (window->win_x) - 100, (window->win_y) - 100);
+	put_img('S', window, (window->win_x) - 75, (window->win_y) - 75);
 }
 
 int	is_wall(int x, int y, t_window *window)
 {
-	x = x / 100;
-	y = y / 100;
+	x = x / 75;
+	y = y / 75;
 	if (window->map[y][x] == 'C')
 	{
 		window->items--;
@@ -87,33 +89,6 @@ int	is_wall(int x, int y, t_window *window)
 		return (1);
 }
 
-int	move_hero(int key, t_window *window)
-{
-	if (window->e_status == 1 || key == 120)
-	{
-		end_game(window, "thank you for playing so_long! :)\n");
-		return (0);
-	}
-	mlx_put_image_to_window(window->mlx, window->win, \
-		window->lndd, window->h_x, window->h_y);
-	if (key == 100 && !is_wall(window->h_x + 100, window->h_y, window))
-		window->h_x += 100;
-	else if (key == 97 && !is_wall(window->h_x - 100, window->h_y, window))
-		window->h_x -= 100;
-	else if (key == 119 && !is_wall(window->h_x, window->h_y - 100, window))
-		window->h_y -= 100;
-	else if (key == 115 && !is_wall(window->h_x, window->h_y + 100, window))
-		window->h_y += 100;
-	mlx_put_image_to_window(window->mlx, window->win, \
-		window->h_image, window->h_x, window->h_y);
-	if (window->e_status == 1)
-	{
-		mlx_put_image_to_window(window->mlx, window->win, \
-			window->scss, window->h_x, window->h_y);
-	}
-	return (0);
-}
-
 int	main(void)
 {
 	char		*map;
@@ -124,15 +99,21 @@ int	main(void)
 	window.moves = 0;
 	window.win = NULL;
 	window.mlx = mlx_init();
-	map = read_map(&window);
+	if (!window.mlx)
+		exit_error(&window, "allocation error", 0);
+	map = read_map(&window, "", "", "");
 	window.map = ft_split(map, '\n');
+	if (!window.map)
+		exit_error(&window, "allocation error", 1);
 	init_blocks(&window);
 	map_validator(&window);
 	init_map(map, &window);
-	mlx_put_image_to_window(window.mlx, window.win, window.h_image, \
+	free(map);
+	mlx_put_image_to_window(window.mlx, window.win, window.h_image,
 		window.h_x, window.h_y);
 	mlx_key_hook(window.win, move_hero, &window);
+	mlx_hook(window.win, 17, 1L << 2, check_click, &window);
+	mlx_loop_hook(window.mlx, time_to_go, &window);
 	mlx_loop(window.mlx);
-	free(map);
 	return (0);
 }
