@@ -13,16 +13,15 @@ $(NAME): libft/libft.a $(OBJ_FILES)
 libft/libft.a:
 	make -C libft
 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
 clean: 
 	make clean -C libft
-	rm -f $(NAME)
+	rm -f $(OBJ_FILES)
 
 fclean: clean
 	rm -f $(NAME)
 	make fclean -C libft
 
 re: fclean all
-
-# src:
-# 	$(CC) $(CFLAGS) $(SRC_FILES) -g -I. -I./libft -L. -L./libft -lmlx -lXext -lX11 -lm -lz -lft -o $(NAME)
-
