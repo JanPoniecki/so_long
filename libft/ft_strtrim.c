@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jponieck <jponieck@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: jponieck <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 12:07:37 by nshahid           #+#    #+#             */
-/*   Updated: 2024/02/04 22:43:34 by jponieck         ###   ########.fr       */
+/*   Created: 2024/03/12 11:01:48 by jponieck          #+#    #+#             */
+/*   Updated: 2024/03/12 11:01:51 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	move_index(char const *s1, char const *set)
 {
-	int		i;
+	size_t	i;
 
 	i = 0;
 	while (ft_strchr(set, s1[i]) && s1[i])
@@ -24,8 +24,8 @@ int	move_index(char const *s1, char const *set)
 
 int	move_index_back(char const *s1, char const *set)
 {
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
 
 	i = ft_strlen(s1);
 	j = 0;
@@ -41,13 +41,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 {
 	char		*trmd;
 	const char	*s0;
-	int			i;
+	size_t		i;
 
 	if (!s1 || !set)
 		return (NULL);
 	s1 += move_index(s1, set);
 	i = ft_strlen(s1) - move_index_back(s1, set);
 	s0 = s1 + i;
+	if (ft_strlen(s0) == 0)
+		return (ft_strdup(""));
 	trmd = (char *)malloc(sizeof(char) * (i + 2));
 	if (!trmd)
 		return (NULL);

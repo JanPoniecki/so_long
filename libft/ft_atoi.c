@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jponieck <jponieck@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 12:07:37 by nshahid           #+#    #+#             */
-/*   Updated: 2023/05/27 12:07:37 by nshahid          ###   ########.fr       */
+/*   Created: 2024/03/06 13:27:53 by jponieck          #+#    #+#             */
+/*   Updated: 2024/03/12 10:45:05 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	ft_atoi(const char *nptr)
 	int		n;
 
 	n = 1;
-	while (*nptr <= 32 && *nptr != 27)
+	while ((*nptr > 8 && *nptr < 14) || *nptr == 32)
 		nptr++;
 	if (nptr[0] == '-' || nptr[0] == '+')
 	{

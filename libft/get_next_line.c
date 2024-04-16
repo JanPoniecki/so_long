@@ -6,10 +6,10 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 21:08:46 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/16 19:48:10 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/03 14:16:45 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 
 	if (mode == 0)
 		string_tools(buffer, 1, 0);
-	while (mode != 5)
+	while (mode != 5 && BUFFER_SIZE != 0)
 	{
 		if (count_tools(buffer, 0, 0, BUFFER_SIZE) == 0)
 		{

@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 12:07:37 by nshahid           #+#    #+#             */
-/*   Updated: 2024/03/28 22:06:24 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:58:42 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }	t_list;
-
 
 void	free_split(char **res);
 int		ft_isascii(int c);

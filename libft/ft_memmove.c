@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jponieck <jponieck@student.42warsaw.pl>    +#+  +:+       +#+        */
+/*   By: jponieck <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/27 12:07:37 by nshahid           #+#    #+#             */
-/*   Updated: 2023/05/27 12:07:37 by nshahid          ###   ########.fr       */
+/*   Created: 2024/03/12 10:55:05 by jponieck          #+#    #+#             */
+/*   Updated: 2024/03/12 10:55:07 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	int	m;
-	int	i;
+	size_t	m;
+	size_t	i;
 
 	i = 0;
 	if (!src && !dest)

@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jponieck <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 22:23:47 by jponieck          #+#    #+#             */
-/*   Updated: 2024/01/14 22:23:51 by jponieck         ###   ########.fr       */
+/*   Created: 2024/03/12 10:53:21 by jponieck          #+#    #+#             */
+/*   Updated: 2024/03/12 10:53:24 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))

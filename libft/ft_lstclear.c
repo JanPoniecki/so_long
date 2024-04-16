@@ -5,10 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jponieck <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/14 23:08:53 by jponieck          #+#    #+#             */
-/*   Updated: 2024/01/14 23:08:58 by jponieck         ###   ########.fr       */
+/*   Created: 2024/03/12 10:52:58 by jponieck          #+#    #+#             */
+/*   Updated: 2024/03/12 10:53:03 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
