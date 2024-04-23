@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 22:47:19 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/16 13:58:02 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:06:15 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_window
 	int		h_y;
 	int		h_xsize;
 	int		h_ysize;
+	char	*map_string;
 	char	**map;
 	int		items;
 	int		e_status;
@@ -59,13 +60,13 @@ int		map_validator(t_window *window);
 void	init_blocks(t_window *w);
 void	end_game(t_window *w, char *message);
 int		count_fields(t_window *window, int i, int j);
-void	aval_from_start(t_window *w, t_node **nodes, int i, int j);
+int		aval_from_start(t_window *w, t_node **nodes, int i, int j);
 int		int_color(unsigned char t, unsigned char r, \
 	unsigned char g, unsigned char b);
 int		move_hero(int key, t_window *window);
 int		check_click(void);
 int		is_wall(int x, int y, t_window *window);
 int		time_to_go(t_window *window);
-void	exit_error(t_window *w, char *message, int e_id);
+void	exit_error(t_window *w, char *message, int e_id, char *free_me);
 
 #endif

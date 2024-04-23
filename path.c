@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/30 20:39:29 by jponieck          #+#    #+#             */
-/*   Updated: 2024/03/31 20:37:56 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:43:18 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,14 +108,18 @@ void	check_path(t_window *window)
 	t_node	**nodes;
 	int		i;
 	int		j;
+	int		res;
 
 	i = 0;
 	j = 0;
 	nodes = init_nodes(window, i, j);
 	fill_up_neighbours_row(window, nodes, i, j);
 	fill_up_neighbours_col(window, nodes, i, j);
-	aval_from_start(window, nodes, i, j);
+	res = aval_from_start(window, nodes, i, j);
 	while (nodes[i])
 		free(nodes[i++]);
 	free(nodes);
+	if (res == -1)
+		end_game(window, "there is no valid path for some \
+collectables or for the exit\n");
 }

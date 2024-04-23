@@ -8,7 +8,7 @@ OBJ_FILES = $(SRC_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): libft/libft.a $(OBJ_FILES)
-	$(CC) $(SRC_FILES) -I. -I./libft -I./libmlx -L. -L./libft -L./libmlx -lmlx -lXext -lX11 -lm -lz -lft -o $(NAME)
+	$(CC) $(SRC_FILES) $(CFLAGS) -I. -I./libft -I./libmlx -L. -L./libft -L./libmlx -lmlx -lXext -lX11 -lm -lz -lft -o $(NAME)
 
 libft/libft.a:
 	make -C libft

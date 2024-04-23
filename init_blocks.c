@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 20:49:00 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/13 22:19:59 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:08:29 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	check_alloc(t_window *w, int errors)
 	if (errors > 0)
 	{
 		destroy_images(w);
-		exit_error(w, "allocation error", 1);
+		exit_error(w, "allocation error", 1, NULL);
 	}
 }
 

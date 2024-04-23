@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:52:25 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/02 21:10:49 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:21:06 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	check_shape(t_window *window, int row)
 	{
 		if (row == 0)
 			col_size = ft_strlen(window->map[row]);
+		if (ft_strlen(window->map[row]) < 3)
+			return (-2);
 		else
 		{
 			if (ft_strlen(window->map[row]) != col_size)
@@ -89,8 +91,10 @@ int	map_validator(t_window *window)
 	window->e_status = 0;
 	row = 0;
 	col = 0;
-	if (check_shape(window, row) != 0)
+	if (check_shape(window, row) == -1)
 		end_game(window, "shape is not rectangular :/ \n");
+	if (check_shape(window, row) == -2)
+		end_game(window, "row is to short :/ \n");
 	if (check_borders(window, row, col) != 0)
 		end_game(window, "not all borders are walls \n");
 	check_chars(window, row, col, "10EPC");

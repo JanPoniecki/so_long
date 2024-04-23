@@ -6,7 +6,7 @@
 /*   By: jponieck <jponieck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/28 18:31:09 by jponieck          #+#    #+#             */
-/*   Updated: 2024/04/14 20:44:53 by jponieck         ###   ########.fr       */
+/*   Updated: 2024/04/19 15:07:57 by jponieck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_map(char *map, t_window *window)
 	window->win = mlx_new_window(window->mlx, window->win_x, \
 		window->win_y, "so long");
 	if (!window->win)
-		exit_error(window, "allocation error", 1);
+		exit_error(window, "allocation error", 1, NULL);
 	while (*map)
 	{
 		if (*map != '\n')
@@ -92,7 +92,6 @@ int	is_wall(int x, int y, t_window *window)
 
 int	main(void)
 {
-	char		*map;
 	t_window	window;
 
 	window.win_x = 0;
@@ -101,15 +100,14 @@ int	main(void)
 	window.win = NULL;
 	window.mlx = mlx_init();
 	if (!window.mlx)
-		exit_error(&window, "allocation error", 0);
-	map = read_map(&window, "", "", "");
-	window.map = ft_split(map, '\n');
+		exit_error(&window, "allocation error", 0, NULL);
+	window.map_string = read_map(&window, "", "", "");
+	window.map = ft_split(window.map_string, '\n');
 	if (!window.map)
-		exit_error(&window, "allocation error", 1);
+		exit_error(&window, "allocation error", 1, NULL);
 	init_blocks(&window);
 	map_validator(&window);
-	init_map(map, &window);
-	free(map);
+	init_map(window.map_string, &window);
 	mlx_put_image_to_window(window.mlx, window.win, window.h_image,
 		window.h_x, window.h_y);
 	mlx_key_hook(window.win, move_hero, &window);
